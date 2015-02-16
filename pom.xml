@@ -4,7 +4,7 @@
 
     <groupId>com.hp.wpp</groupId>
     <artifactId>deploytest</artifactId>
-    <version>1.1-SNAPSHOTS</version>
+    <version>1.1-SNAPSHOT</version>
     <properties>
         <junit.version>4.11</junit.version>
         <spring.version>4.1.2.RELEASE</spring.version>
