@@ -1,6 +1,9 @@
 package com.hp.wpp;
 
 import org.jboss.resteasy.plugins.server.tjws.TJWSEmbeddedJaxrsServer;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.UUID;
 
@@ -11,32 +14,32 @@ public class HelloWorldTest {
 
     private TJWSEmbeddedJaxrsServer server;
 
-    //@Before
+    @Before
     public void setup() {
         server = new TJWSEmbeddedJaxrsServer();
-        server.setPort(8080);
+        server.setPort(9000);
         server.start();
         server.getDeployment().getRegistry().addPerRequestResource(HelloWorld.class);
 
     }
 
-    //@After
+    @After
     public void tearDown() {
         server.stop();
     }
 
 
-    //@Test
+    @Test
     public void helloWorld() throws Exception {
-        get("/hello").
+        get("http://localhost:9000/hello").
                 then().
                 assertThat().statusCode(200).and().body(equalTo("Hello World"));
     }
 
-    //@Test
+    @Test
     public void echoAPI() throws Exception {
         UUID uuid = UUID.randomUUID();
-        get("/hello/echo/" + uuid.toString()).
+        get("http://localhost:9000/hello/echo/" + uuid.toString()).
                 then().
                 assertThat().statusCode(200).body(equalTo(uuid.toString()));
     }
