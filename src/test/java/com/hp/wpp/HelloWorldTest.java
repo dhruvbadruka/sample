@@ -31,7 +31,7 @@ public class HelloWorldTest {
 
     @Test
     public void helloWorld() throws Exception {
-        get("http://localhost:9000/hello").
+        get("http://localhost:9000/hell1o").
                 then().
                 assertThat().statusCode(200).and().body(equalTo("Hello World"));
     }
